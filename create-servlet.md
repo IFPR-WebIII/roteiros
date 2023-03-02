@@ -15,6 +15,7 @@ A estrutura de uma aplicação JAVA para web, de acordo com a especificação.
 
 Um aplicativo web requer uma estrutura fundamental. A parte mais importante será a do diretório WEB-INF onde serão listadas as classes compiladas finais. É uma boa prática listar as classes e bibliotecas necessárias para o aplicativo da web nesta pasta.
 
+
 ## Etapas para criar uma aplicação JAVA web - Etapa 1
 Crie a estrutura de diretório, conforme orientações abaixo:
 
