@@ -1,4 +1,5 @@
-## Exemplo de Servlet (sem auxílio de editores ou IDE's)
+
+# Exemplo de Servlet (sem auxílio de editores ou IDE's)
 
 A criação de um projeto Java para web deve seguir uma estrutura, que segue uma especificação bem definida. 
 Criar essa estrutura sem apoio de uma IDE's só tem sentido para fins acadêmicos.
@@ -6,90 +7,110 @@ Criar essa estrutura sem apoio de uma IDE's só tem sentido para fins acadêmico
 
 A estrutura de uma aplicação JAVA para web, de acordo com a especificação.
 
-1 - O Servlet: a classe java que manipula as rquisições HTTP;
-2 - Descritor de implementação web.xml . Arquivo informando como o webapp deve ser interagido como o padrão de url
-3 - Arquivo jar do servlet – Este é o jar manipulando a mágica da interação com a web para o servlet.
+ - **O Servlet:** a classe java que manipula as rquisições HTTP; 
+ - **Descritor de implementação web.xml** . Arquivo informando como o webapp deve ser interagido como o padrão de url 
+ - **Arquivo jar do Servlet** – Este é o jar manipulando a mágica da interação com a web para o servlet.
 
-Estrutura do webapp
+## Estrutura do webapp
 
-O aplicativo da web requer alguma estrutura básica para criar nosso servlet simples ou qualquer outro grande.
+Um aplicativo web requer uma estrutura fundamental. A parte mais importante será a do diretório WEB-INF onde serão listadas as classes compiladas finais. É uma boa prática listar as classes e bibliotecas necessárias para o aplicativo da web nesta pasta.
 
-A parte mais importante será a do diretório WEB-INF onde serão listadas as classes compiladas finais. É uma boa prática listar as classes e bibliotecas necessárias para o aplicativo da web nesta pasta
+## Etapas para criar uma aplicação JAVA web - Etapa 1
+Crie a estrutura de diretório, conforme orientações abaixo:
 
-  META-INF
-  WEB-INF
-  –web.xml
-  –classes
-  –lib
-  —-javax.servlet-api-3.1.0.jar
-  src
-  –com
-  —-gullele
-  ——simple
-  ——–LightServlet.java
+	META-INF
+	WEB-INF
+	– web.xml
+	– classes
+	– lib
+	– – javax.servlet-api-4.1.0.jar
+	src
+	– com
+	–– ifpr
+	——– HelloServlet.java
 
-Etapas para criar um servlet simples
-1. Vá em frente e baixe a API do servlet aqui . Procure por download e pegue o jar
+## Etapas para criar uma aplicação JAVA web - Etapa 2
 
-2. Crie a estrutura de diretório acima na pasta simple-servlet.
-
-3. Adicione o seguinte no arquivo web.xml
+ - Baixe a API do Servlet neste [link](https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1) . Procure por "Files" e selecione o **jar**;
+ - Mova o arquivo baixado para a pasta adequada;
 
 
-  <!DOCTYPE web-app PUBLIC
-    "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-    "http://java.sun.com/dtd/web-app_2_3.dtd" >
+##  Etapas para criar uma aplicação JAVA web - Etapa 3
+
+Adicione o  seguinte conteúdo no arquivo web.xml: 
+	
+<?xml version="1.0" encoding="UTF-8"?>
+	<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+	  version="5.0">
+	  <display-name>Hello Servlet</display-name>
+
+	  <servlet>
+	    <servlet-name>helloservlet</servlet-name>
+	    <servlet-class>com.ifpr.HelloServlet</servlet-class>
+	  </servlet>
+
+	  <servlet-mapping>
+	    <servlet-name>helloservlet</servlet-name>
+	    <url-pattern>/show</url-pattern>
+	  </servlet-mapping>
+
+	</web-app>
+
+
+O arquivo `web.xml` acima informa que quando você clicar em localhost:8080/<nome_app>/show, ele seguirá para o HelloServlet e "servirá" o conteúdo requisitado.
+
+##  Etapas para criar uma aplicação JAVA web - Etapa 4
+
+Adicione o seguinte conteúdo em LightServlet.java
+
+```
+package com.ifpr;
    
-   <web-app>
-     <display-name>Simple Servlet Webapp</display-name>
-     <servlet>
-       <servlet-name>simpleservlet</servlet-name>
-       <servlet-class>com.gullele.simple.LightServlet</servlet-class>
-    </servlet>
-  
-    <servlet-mapping>
-      <servlet-name>simpleservlet</servlet-name>
-      <url-pattern>/show</url-pattern>
-    </servlet-mapping>
-  </web-app>
-O descritor acima informa que quando você clicar em localhost:8080/simpleservlet/show, ele seguirá para o LightServlet e fornecerá o conteúdo.
+import java.io.IOException;
+import java.io.PrintWriter;
 
-4. Adicione o seguinte conteúdo em LightServlet.java
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class HelloServlet extends HttpServlet {
+
+   public void doGet(**HttpServletRequest** request, **HttpServletResponse** response) throws IOException  {
+       PrintWriter writer = response.getWriter();
+       writer.println("hey");
+   }
+}
+```
+
+Este código será executado quando uma requisição for realizada para /show. Simplesmente será impresso **"hey"** quando digitar esse endereço no navegador  
+
+#### Observações 
+
+ - Antes é necessário compilar e implantá-lo no servidor web;
+ - Como se pode ver, a maioria das importações vem do arquivo jar que você baixou;
+
+Assumindo que você seguiu tudo corretamente, a próxima etapa é compilar o projeto e garantir que nenhum problema esteja acontecendo.
+
+## Etapas para criar uma aplicação JAVA web - Etapa 5
 
 
-   package com.gullele.simple;
-   
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
-   import java.io.PrintWriter;
-   import java.io.IOException;
-   
-   public class LightServlet extends HttpServlet {
-  
-      public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException  {
-          PrintWriter writer = response.getWriter();
-          writer.println("hey");
-      }
-  }
-Este é o código que seria chamado quando você clicar em /show em seu navegador. Como você pode ver, a maioria das importações vem do arquivo jar que você baixou e outras são do arquivo java.io.
+Estando na pasta raiz da aplicação, execute o seguinte comando:
+```
+javac -classpath WEB-INF/lib/javax.servlet-api-4.0.1.jar src/com/ifpr/HelloServlet.java -d WEB-INF/classes
+```
+O comando acima diz ao java para compilar (`javac`) o Servlet e usar o arquivo jar que baixamos durante a compilação. 
+A instrução `-d` por sua vez, indicará onde colocar os arquivos de classe para uso futuro. Se não for fornecido, por padrão, o diretório atual é usado.
 
-Ele simplesmente imprimirá hey quando você clicar em localhost:8080/simple/show mais tarde, quando terminar de compilar e implantá-lo no servidor web tomcat.
+Agora nosso simples exemplo de Servlet está pronto para ser empacotado como **war**.
 
-5. Agora tudo deve estar bem, assumindo que você seguiu tudo corretamente. A próxima parte é compilar o projeto e garantir que nenhum problema esteja acontecendo.
+## Etapas para criar uma aplicação JAVA web - Etapa 6
 
-Estando em sua pasta raiz, ou seja, um servlet simples, execute o seguinte
+Execute o seguinte comando para obter o arquivo war – web archive
 
-javac -classpath WEB-INF/lib/javax.servlet-api-3.1.0.jar src/com/gullele/simple/LightServlet.java -d WEB-INF/classes
+`jar -cvf app.war *`
 
-O comando acima diz ao java para compilar javaco servlet e usar o arquivo jar que baixamos durante a compilação. E o -d dirá onde colocar os arquivos de classe para uso. Se não for fornecido, por padrão, o diretório atual é usado.
+Apenas certifique-se de incluir o arquivo inteiro por enquanto. Cabe mencionar que, em casos não educacionais, você não precisa do arquivo java real e outras coisas.
 
-Agora nosso simples exemplo de servlet está pronto para ser empacotado como war
-
-6. Execute o seguinte comando para obter o arquivo war – web archive
-
-jar -cvf simple-servlet.war *
-
-Apenas certifique-se de incluir o arquivo inteiro por enquanto. No caso real, você não precisa do arquivo java real e outras coisas. Mas, por enquanto, você pode adicionar todos. O arquivo de guerra final espera as pastas META-INFe WEB-INF.
-
-Agora você tem o arquivo war para poder implantá-lo no servidor da Web de sua escolha, como o Tomcat.
+Agora você tem-se o arquivo **war** para poder implantá-lo no servidor da web de sua escolha, como o Tomcat, por exemplo.
