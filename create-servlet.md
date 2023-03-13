@@ -78,7 +78,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HelloServlet extends HttpServlet {
 
-   public void doGet(**HttpServletRequest** request, **HttpServletResponse** response) throws IOException  {
+   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException  {
        PrintWriter writer = response.getWriter();
        writer.println("hey");
    }
