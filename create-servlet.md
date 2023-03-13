@@ -64,7 +64,7 @@ O arquivo `web.xml` acima informa que quando você clicar em localhost:8080/<nom
 
 ##  Etapas para criar uma aplicação JAVA web - Etapa 4
 
-Adicione o seguinte conteúdo em LightServlet.java
+Adicione o seguinte conteúdo em HelloServlet.java
 
 ```
 package com.ifpr;
