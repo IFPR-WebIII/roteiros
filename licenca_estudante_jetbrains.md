@@ -1,0 +1,1 @@
+#licenca_estudante_jetbrains.md
