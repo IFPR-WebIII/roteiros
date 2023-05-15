@@ -62,3 +62,6 @@ No exemplo acima, o método getConnection realiza a conexão com o banco de dado
 
 ### Operação 2: recuperar dados
 ---
+
+___
+
