@@ -6,7 +6,7 @@ Este repositório foi criado com o objetivo de armazenar roteiros, passo a passo
 
  1. [Criar uma aplicação web JAVA sem o uso de IDE's (para fins didáticos)](https://github.com/IFPR-WebIII/roteiros/blob/main/create-servlet.md)
  2. [Solicitação de licença de estudante para produtos JetBrains](https://github.com/IFPR-WebIII/roteiros/blob/main/licenca_estudante_jetbrains.md)
-
+ 3. [Atalhos úteis Intellij](https://github.com/IFPR-WebIII/roteiros/blob/main/uteis_intellij.md)
 
 
 **Conhece ou viu algum tutorial que gostou e acha que pode contribuir para a formação dos colegas? Faça uma solicitação de alteração! :smiley:**
