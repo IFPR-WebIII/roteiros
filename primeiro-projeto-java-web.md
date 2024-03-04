@@ -1,4 +1,4 @@
-# Tutorial: Seu primeiro aplicativo Java EE
+# GUIA: Configurando seu aplicativo Java EE
 Este tutorial descreve como criar uma aplicação web  usando Java Enterprise Edition (Java EE) no IntelliJ IDEA. A aplicação incluirá uma única página JSP que mostra `Hello, World!`e um link para um servlet Java que também mostra `Hello, World!`.
 
 Este tutorial te orientará a criar um novo projeto Java EE usando o modelo de aplicativo da web, informando ao IntelliJ IDEA onde seu **servidor de aplicações** está localizado e, em seguida, usará uma configuração de execução para construir o artefato, iniciar o servidor e implementar o artefato nele.
